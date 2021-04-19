@@ -1,7 +1,12 @@
+const generateWords = require('../numbertoword');
+
 exports.getWords = (req, res) => {
   try {
+    const words = generateWords(req.params.numbers);
+    res.status(200);
+    res.send(words);
   } catch (err) {
-    console.log('e', err); // eslint-disable-line no-console
-    res.sendStatus(500);
+    console.log('error', err); // eslint-disable-line no-console
+    res.status(500);
   }
 };
