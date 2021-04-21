@@ -16,6 +16,7 @@ function App ({dispatch, isFetching, hasErrors, words, digits}) {
     {digit: '7', letters: 'pqrs'},
     {digit: '8', letters: 'tuv'},
     {digit: '9', letters: 'wxyz'},
+    {digit: '0', letters: ''},
   ];
 
   useEffect(() => {
@@ -25,22 +26,24 @@ function App ({dispatch, isFetching, hasErrors, words, digits}) {
   const renderWords = () => {
     if (isFetching) return <p>Loading words...</p>;
     if (hasErrors) return <p>Unable to display words.</p>;
-    // return posts.map((post) => <Post key={post.id} post={post} />)
-    return <p>Words: {words}</p>;
+    return words.map((word) => <div key={word}><span>{word}</span></div>);
+    // return <p>Words: {words}</p>;
   };
 
   return (
     <div className="App">
-      <div className="display">{renderWords()}</div>
-      <div className="buttons">
-        {digitsOptions
-          .map(item => 
-            <DigitButton 
-              key={item.digit}
-              digit= {item.digit}
-              letters={item.letters}
-            />)}
-        <button onClick={() => dispatch(deleteDigit())}>Delete</button>
+      <div className="phone">
+        <div className="display">{renderWords()}</div>
+        <div className="buttons">
+          {digitsOptions
+            .map(item => 
+              <DigitButton 
+                key={item.digit}
+                digit= {item.digit}
+                letters={item.letters}
+              />)}
+          <button className="deleteButton" onClick={() => dispatch(deleteDigit())}>Delete</button>
+        </div>
       </div>
     </div>
   );
