@@ -6,7 +6,17 @@ import DigitButton from '../components/digitButton';
 import './App.css';
 
 function App ({dispatch, isFetching, hasErrors, words, digits}) {
-  const digitsOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  const digitsOptions = [
+    {digit: '1', letters: ''},
+    {digit: '2', letters: 'abc'},
+    {digit: '3', letters: 'def'},
+    {digit: '4', letters: 'ghi'},
+    {digit: '5', letters: 'jkl'},
+    {digit: '6', letters: 'mno'},
+    {digit: '7', letters: 'pqrs'},
+    {digit: '8', letters: 'tuv'},
+    {digit: '9', letters: 'wxyz'},
+  ];
 
   useEffect(() => {
     dispatch(fetchWords(digits));
@@ -24,10 +34,11 @@ function App ({dispatch, isFetching, hasErrors, words, digits}) {
       <div className="display">{renderWords()}</div>
       <div className="buttons">
         {digitsOptions
-          .map(digit => 
+          .map(item => 
             <DigitButton 
-              key={digit}
-              digit= {digit}
+              key={item.digit}
+              digit= {item.digit}
+              letters={item.letters}
             />)}
         <button onClick={() => dispatch(deleteDigit())}>Delete</button>
       </div>
