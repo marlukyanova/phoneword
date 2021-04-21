@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchWords, deleteDigit } from '../actions/index';
 import DigitButton from '../components/digitButton';
@@ -19,8 +19,10 @@ function App ({dispatch, hasErrors, words, digits}) {
     {digit: '0', letters: ''},
   ];
 
+  const [isRealWords, setIsRealWords] = useState(false);
+
   useEffect(() => {
-    dispatch(fetchWords(digits));
+    dispatch(fetchWords(digits, isRealWords));
   }, [digits]);
 
   const renderWords = () => {
@@ -44,7 +46,8 @@ function App ({dispatch, hasErrors, words, digits}) {
                 digit= {item.digit}
                 letters={item.letters}
               />)}
-          <button className="deleteButton" onClick={() => dispatch(deleteDigit())}>Delete</button>
+          <button className="anotherButton" onClick={() => setIsRealWords(!isRealWords)}>Real Words</button>
+          <button className="anotherButton" onClick={() => dispatch(deleteDigit())}>Delete</button>
         </div>
       </div>
     </div>

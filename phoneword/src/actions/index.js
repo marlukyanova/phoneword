@@ -18,13 +18,13 @@ const getWodsFailure = () => ({
   type: 'GET_WORDS_FAILURE',
 });
 
-export const fetchWords = (digits) => {
+export const fetchWords = (digits, isRealWords) => {
   return (dispatch) => {
     if (digits.length === 0) {
       dispatch(getWordsSuccess([]));
     } else {
       try {
-        requestWords(digits)
+        requestWords(digits, isRealWords)
           .then(res => dispatch(getWordsSuccess(res)));
       } catch (error) {
         dispatch(getWodsFailure());
