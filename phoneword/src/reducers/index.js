@@ -19,14 +19,12 @@ const words = (state = {
   case 'GET_WORDS_SUCCESS':
     return {
       ...state,
-      isFetching: false,
       hasErrors: false,
       items: action.words
     };
   case 'GET_WORDS_FAILURE':
     return {
       ...state,
-      isFetching: false,
       hasErrors: true
     };
   default:

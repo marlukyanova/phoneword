@@ -18,7 +18,7 @@ const getWodsFailure = () => ({
   type: 'GET_WORDS_FAILURE',
 });
 
-export function fetchWords (digits) {
+export const fetchWords = (digits) => {
   return (dispatch) => {
     if (digits.length === 0) {
       dispatch(getWordsSuccess([]));
@@ -31,4 +31,4 @@ export function fetchWords (digits) {
       }
     }
   };
-}
+};
