@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const digits = (state = '', action) => {
   switch (action.type) {
   case 'ADD_DIGIT':
-    return state + action.digit;
+    return action.digit === '1' ? state : state + action.digit;
   case 'DELETE_DIGIT':
     return state.slice(0, -1);
   default:
