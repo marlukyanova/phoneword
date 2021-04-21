@@ -1,6 +1,6 @@
 const BASE_URL = 'http://localhost:3001';
 
-const getWords = (numbers) => {
+const requestWords = (numbers) => {
   console.log('sending request to server for', numbers);
   return (
     fetch(`${BASE_URL}/words/${numbers}`)
@@ -9,4 +9,4 @@ const getWords = (numbers) => {
   );
 };
 
-export default getWords;
+export default requestWords;
