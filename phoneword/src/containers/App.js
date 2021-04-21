@@ -15,8 +15,7 @@ function App ({dispatch, hasErrors, words, digits}) {
     {digit: '6', letters: 'mno'},
     {digit: '7', letters: 'pqrs'},
     {digit: '8', letters: 'tuv'},
-    {digit: '9', letters: 'wxyz'},
-    {digit: '0', letters: ''},
+    {digit: '9', letters: 'wxyz'}
   ];
 
   const [isRealWords, setIsRealWords] = useState(false);
@@ -29,7 +28,7 @@ function App ({dispatch, hasErrors, words, digits}) {
     if (hasErrors) return <p>Unable to display words.</p>;
     return <div>{
       words.length === 0 
-        ? <p>No words</p>
+        ? <p>No words for &lsquo;{digits}&lsquo;</p>
         :  words.map((word) => <div key={word}><span>{word}</span></div>)}
     </div>;
   };
@@ -47,6 +46,7 @@ function App ({dispatch, hasErrors, words, digits}) {
                 letters={item.letters}
               />)}
           <button className="anotherButton" onClick={() => setIsRealWords(!isRealWords)}>Real Words</button>
+          <button className="anotherButton">0</button>
           <button className="anotherButton" onClick={() => dispatch(deleteDigit())}>Delete</button>
         </div>
       </div>
