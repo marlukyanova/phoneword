@@ -1,6 +1,6 @@
 require('chai').should();
 
-const generateWords = require('../numbertoword');
+const {generateWords, checkRealWords} = require('../numbertoword');
 
 describe('generateWords', function () {
   it('should convert numbers to a list of corresponding words', function () {
@@ -18,3 +18,9 @@ describe('generateWords', function () {
     ]);
   });
 });
+
+describe('checkRealWords', function () {
+  it('should return an array consisting of real words', function () {
+    checkRealWords('44').should.eql(['gi', 'hi']);
+  })
+})

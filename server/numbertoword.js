@@ -1,3 +1,5 @@
+var realWords = require('an-array-of-english-words');
+
 const dict = {
   2: ['a', 'b', 'c'],
   3: ['d', 'e', 'f'],
@@ -28,4 +30,15 @@ function generateWords(input) {
   return res;
 }
 
-module.exports = generateWords;
+function checkRealWords(input) {
+  let allWords = generateWords(input);
+  let res = [];
+  for (let i = 0; i < allWords.length; i++) {
+    let currentWord = allWords[i]
+    let regex = new RegExp( '^' + currentWord + '$');
+    if (realWords.find(d => d.match(regex))) res.push(currentWord);
+  }
+  return res;
+}
+
+module.exports = {generateWords, checkRealWords};
