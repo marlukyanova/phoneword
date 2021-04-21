@@ -12,7 +12,7 @@
    ```bash
    cd server
    npm install
-   nodemon
+   npm run start
    ```
 
 3. Install dependencies for client.
