@@ -12,16 +12,10 @@ const digits = (state = '', action) => {
 };
 
 const words = (state = {
-  isFetching: false,
   hasErrors: false,
   items: []
 }, action) => {
   switch (action.type) {
-  case 'GET_WORDS':
-    return {
-      ...state,
-      isFetching: true
-    };
   case 'GET_WORDS_SUCCESS':
     return {
       ...state,

@@ -9,10 +9,6 @@ export const deleteDigit = () => ({
   type: 'DELETE_DIGIT',
 });
 
-const getWords = () => ({
-  type: 'GET_WORDS',
-});
-
 const getWordsSuccess = (words) => ({
   type: 'GET_WORDS_SUCCESS',
   words,
@@ -27,7 +23,6 @@ export function fetchWords (digits) {
     if (digits.length === 0) {
       dispatch(getWordsSuccess([]));
     } else {
-      dispatch(getWords());
       try {
         requestWords(digits)
           .then(res => dispatch(getWordsSuccess(res)));

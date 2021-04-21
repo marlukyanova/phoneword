@@ -5,7 +5,7 @@ import DigitButton from '../components/digitButton';
 
 import './App.css';
 
-function App ({dispatch, isFetching, hasErrors, words, digits}) {
+function App ({dispatch, hasErrors, words, digits}) {
   const digitsOptions = [
     {digit: '1', letters: ''},
     {digit: '2', letters: 'abc'},
@@ -24,10 +24,12 @@ function App ({dispatch, isFetching, hasErrors, words, digits}) {
   }, [digits]);
 
   const renderWords = () => {
-    if (isFetching) return <p>Loading words...</p>;
     if (hasErrors) return <p>Unable to display words.</p>;
-    return words.map((word) => <div key={word}><span>{word}</span></div>);
-    // return <p>Words: {words}</p>;
+    return <div>{
+      words.length === 0 
+        ? <p>No words</p>
+        :  words.map((word) => <div key={word}><span>{word}</span></div>)}
+    </div>;
   };
 
   return (
@@ -50,7 +52,6 @@ function App ({dispatch, isFetching, hasErrors, words, digits}) {
 }
 
 const mapStateToProps = (state) => ({
-  isFetching: state.words.isFetching,
   words: state.words.items,
   hasErrors: state.words.hasErrors,
   digits: state.digits,
