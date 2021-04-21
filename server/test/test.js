@@ -22,5 +22,6 @@ describe('generateWords', function () {
 describe('checkRealWords', function () {
   it('should return an array consisting of real words', function () {
     checkRealWords('44').should.eql(['gi', 'hi']);
+    checkRealWords('4663').should.eql(['gone', 'good', 'goof', 'home', 'hond', 'hone', 'hood', 'hoof']);
   })
 })
